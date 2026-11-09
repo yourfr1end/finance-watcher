@@ -1,0 +1,93 @@
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.amountBox {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.amountBox:focus-within {
+  border-color: var(--accent);
+}
+
+.amountBox[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.amount {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.currency {
+  font-size: 1.5rem;
+  color: var(--muted);
+}
+
+.dateRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dayChip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.dayChipActive {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--text);
+}
+
+.dateInput {
+  flex: 1 1 150px;
+  width: auto;
+  padding: 7px 10px;
+}
+
+.pull {
+  margin-top: -10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  position: sticky;
+  bottom: 0;
+  padding-top: 8px;
+  background: var(--surface);
+}
+
+.delete {
+  margin-right: auto;
+}
+
+.actions :global(.btn-primary) {
+  flex: 1;
+}
+
+@media (min-width: 600px) {
+  .actions :global(.btn-primary) {
+    flex: 0 0 auto;
+  }
+}

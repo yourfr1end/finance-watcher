@@ -1,0 +1,40 @@
+.dialog {
+  width: min(520px, 100%);
+  max-height: min(90vh, 100%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: auto auto 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* bottom sheet on phones, centered dialog on wider screens */
+@media (min-width: 600px) {
+  .dialog {
+    margin: auto;
+    border-radius: var(--radius);
+  }
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+
+.panel {
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+}

@@ -1,0 +1,54 @@
+.root {
+  margin-bottom: 16px;
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  min-height: 44px;
+}
+
+.side {
+  display: flex;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.35rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.below {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+.button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}

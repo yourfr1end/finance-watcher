@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.add,
+.input {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.add {
+  cursor: pointer;
+}
+
+.input {
+  width: 120px;
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--text);
+  outline: none;
+}

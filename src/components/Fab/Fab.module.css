@@ -1,0 +1,21 @@
+.fab {
+  position: fixed;
+  /* stick to the right edge of the centered .page column on wide screens */
+  right: max(16px, calc((100vw - 640px) / 2 + 16px));
+  bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 16px);
+  z-index: 11;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 2rem;
+  line-height: 1;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.4);
+  cursor: pointer;
+}
+
+.fab:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,55 @@
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 6px;
+}
+
+.tile {
+  cursor: pointer;
+}
+
+.face {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  background: var(--bg);
+  height: 100%;
+}
+
+.name {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+
+.tile input:checked + .face {
+  border-color: var(--cat-color);
+  background: color-mix(in srgb, var(--cat-color) 12%, var(--bg));
+}
+
+.tile input:checked + .face .name {
+  color: var(--text);
+}
+
+.tile input:focus-visible + .face {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.fieldset[aria-invalid='true'] .face {
+  border-color: color-mix(in srgb, var(--danger) 40%, transparent);
+}

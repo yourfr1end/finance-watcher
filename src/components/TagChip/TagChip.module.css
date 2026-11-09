@@ -1,0 +1,36 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--tag-color) 50%, transparent);
+  background: color-mix(in srgb, var(--tag-color) 18%, transparent);
+  /* text stays in text ink; the tint carries identity (contrast-safe for any palette color) */
+  color: var(--text);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+button.chip {
+  cursor: pointer;
+}
+
+/* selected: stronger tint + solid border; text stays light (a solid fill would drop below 4.5:1) */
+.selected {
+  background: color-mix(in srgb, var(--tag-color) 55%, var(--bg));
+  border-color: var(--tag-color);
+  box-shadow: 0 0 0 1px var(--tag-color);
+  font-weight: 600;
+}
+
+.remove {
+  border: none;
+  background: none;
+  padding: 0 0 0 2px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}

@@ -1,0 +1,15 @@
+.optional {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,155 @@
+.root {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* ---- center of the donut ---- */
+
+.centerIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.centerLabel {
+  max-width: 100%;
+  font-size: 0.8rem;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.centerValue {
+  font-size: clamp(1.05rem, 5.2vw, 1.45rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.centerSub {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ---- comparison with previous month ---- */
+
+.comparison {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.75rem;
+}
+
+/* ---- ranked legend ---- */
+
+.legend {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.row:hover {
+  background: var(--surface);
+}
+
+.rowSelected,
+.rowSelected:hover {
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.track {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  border-radius: 2px;
+  transition: width 300ms ease;
+}
+
+.percent {
+  min-width: 4ch;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.more {
+  justify-self: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .bar {
+    transition: none;
+  }
+}
