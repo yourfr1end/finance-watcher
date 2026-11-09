@@ -39,7 +39,13 @@ export function formatMonth(monthKey) {
   return `${name[0].toUpperCase()}${name.slice(1)} ${monthKey.slice(0, 4)}`;
 }
 
-const dayFormat = new Intl.DateTimeFormat('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
+/** "Октябрь" for the current year, "Октябрь 2025" otherwise (compact controls). */
+export function formatMonthShort(monthKey) {
+  const full = formatMonth(monthKey);
+  return monthKey.slice(0, 4) === String(new Date().getFullYear()) ? full.slice(0, -5) : full;
+}
+
+const dayFormat =new Intl.DateTimeFormat('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
 
 /** "Сегодня" / "Вчера" / "пятница, 7 ноября" */
 export function formatDay(dayKey, now = Date.now()) {

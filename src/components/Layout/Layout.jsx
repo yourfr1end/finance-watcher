@@ -3,6 +3,7 @@ import styles from './Layout.module.css';
 
 const TABS = [
   { to: '/expenses', label: 'Траты', icon: '🧾' },
+  { to: '/stats', label: 'Статистика', icon: '📊' },
   { to: '/categories', label: 'Категории', icon: '🗂️' },
 ];
 
