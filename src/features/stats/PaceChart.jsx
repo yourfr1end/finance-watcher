@@ -1,7 +1,7 @@
 import { LineCompare } from '../../components/charts/LineCompare.jsx';
 import { addMonths, formatMonth, inMonth } from '../../lib/date.js';
 import { formatMoneyRounded } from '../../lib/format.js';
-import { COLORS, NEUTRAL_COLOR } from '../../lib/palette.js';
+import { COLORS, NEUTRAL_COLOR, paint } from '../../lib/palette.js';
 import { useCumulativeByDay } from './useStatsData.js';
 import styles from './StatsPage.module.css';
 import chartStyles from '../../components/charts/charts.module.css';
@@ -39,7 +39,7 @@ export function PaceChart({ currentMonth, selectedKeys }) {
           <span key={s.key} className={chartStyles.legendItem}>
             <span
               className={`${chartStyles.legendLine} ${s.dashed ? chartStyles.legendLineDashed : ''}`}
-              style={{ '--swatch': s.color }}
+              style={{ '--swatch': paint(s.color) }}
             />
             {s.label}
           </span>

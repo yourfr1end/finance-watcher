@@ -1,4 +1,5 @@
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
+import { paint } from '../../lib/palette.js';
 import styles from './CategoryPicker.module.css';
 
 /** Grid of category tiles with radio semantics. */
@@ -8,7 +9,7 @@ export function CategoryPicker({ categories, value, onChange, invalid }) {
       <legend className="field-label">Категория</legend>
       <div className={styles.grid}>
         {categories.map((c) => (
-          <label key={c.id} className={styles.tile} style={{ '--cat-color': c.color }}>
+          <label key={c.id} className={styles.tile} style={{ '--cat-color': paint(c.color) }}>
             <input
               type="radio"
               name="category"

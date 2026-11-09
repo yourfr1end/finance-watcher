@@ -1,0 +1,128 @@
+.section {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hint strong {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- theme cards ---- */
+
+.themes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.theme {
+  cursor: pointer;
+}
+
+.themeFace {
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 6px;
+  padding: 10px 8px 12px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.theme input:checked + .themeFace {
+  border-color: var(--accent);
+}
+
+.theme input:focus-visible + .themeFace {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.themeLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.themeHint {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+/* mini screen previews: fixed colors on purpose — each shows its own theme */
+.preview {
+  --p-bg: #0f172a;
+  --p-surface: #1e293b;
+  --p-line: #334155;
+  --p-a: #3987e5;
+  --p-b: #d95926;
+
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  justify-items: center;
+  gap: 4px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  background: var(--p-bg);
+  border: 1px solid var(--p-line);
+}
+
+.preview[data-preview='light'] {
+  --p-bg: #f1f5f9;
+  --p-surface: #ffffff;
+  --p-line: #cbd5e1;
+  --p-a: #2a78d6;
+  --p-b: #eb6834;
+}
+
+/* split preview: dark left, light right */
+.preview[data-preview='system'] {
+  background: linear-gradient(90deg, #0f172a 50%, #f1f5f9 50%);
+  --p-surface: #94a3b8;
+  --p-line: #94a3b8;
+}
+
+.previewBar {
+  width: 60%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--p-line);
+}
+
+.previewRing {
+  width: 26px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(var(--p-a) 0 60%, var(--p-b) 60% 100%);
+  mask: radial-gradient(circle, transparent 45%, #000 46%);
+}
+
+.previewLine {
+  width: 85%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--p-surface);
+}

@@ -4,6 +4,8 @@ import { LEGACY_COLOR_MAP } from '../lib/palette.js';
 import { loadLegacyExpenses, SEED_CATEGORIES } from './seed.js';
 
 // Declared before the store: persist hydrates (and runs migrate) synchronously at module load.
+export const DEFAULT_SETTINGS = { theme: 'dark', currency: 'RUB' };
+
 const OLD_SEED_TAG_IDS = new Set([
   // v1
   'tag-required', 'tag-regular', 'tag-leisure',
@@ -28,6 +30,11 @@ export const useFinanceStore = create(
     (set, get) => ({
       categories: SEED_CATEGORIES,
       expenses: loadLegacyExpenses(),
+      settings: DEFAULT_SETTINGS,
+
+      // ---- settings ----
+      /** theme: 'dark' | 'light' | 'system'; currency: ISO 4217 code (display only, no conversion) */
+      updateSettings: (patch) => set((s) => ({ settings: { ...s.settings, ...patch } })),
 
       // ---- categories ----
       addCategory: ({ name, icon, color, tags }) => {
@@ -93,9 +100,15 @@ export const useFinanceStore = create(
     }),
     {
       name: 'finance-watcher',
-      version: 5,
+      version: 6,
       storage: createJSONStorage(() => localStorage),
-      partialize: ({ categories, expenses }) => ({ categories, expenses }),
+      partialize: ({ categories, expenses, settings }) => ({ categories, expenses, settings }),
+      // settings added later than other fields: fill gaps with defaults on every load
+      merge: (persisted, current) => ({
+        ...current,
+        ...persisted,
+        settings: { ...DEFAULT_SETTINGS, ...persisted?.settings },
+      }),
       migrate,
     },
   ),
@@ -129,6 +142,10 @@ function migrate(persisted, version) {
   if (version < 5) {
     // v5: new chart-safe palette — move categories off the old colors
     persisted.categories = persisted.categories.map((c) => ({ ...c, color: LEGACY_COLOR_MAP[c.color] ?? c.color }));
+  }
+  if (version < 6) {
+    // v6: settings (theme, currency); existing users keep the dark theme they had
+    persisted.settings = { ...DEFAULT_SETTINGS, ...persisted.settings };
   }
   return persisted;
 }

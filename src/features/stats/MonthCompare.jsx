@@ -3,7 +3,7 @@ import { useFinanceStore } from '../../store/useFinanceStore.js';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
 import { addMonths, formatMonthShort, toMonthKey } from '../../lib/date.js';
 import { formatDelta, formatMoneyRounded } from '../../lib/format.js';
-import { NEUTRAL_COLOR } from '../../lib/palette.js';
+import { NEUTRAL_COLOR, paint } from '../../lib/palette.js';
 import { useMonthPair } from './useStatsData.js';
 import styles from './StatsPage.module.css';
 
@@ -44,7 +44,7 @@ export function MonthCompare({ currentMonth, selectedKeys }) {
     <>
       <div className={styles.pair}>
         <label className={styles.pairField} htmlFor={idA}>
-          <span className={styles.pairSwatch} style={{ background: NEUTRAL_COLOR }} aria-hidden="true" />
+          <span className={styles.pairSwatch} style={{ background: paint(NEUTRAL_COLOR) }} aria-hidden="true" />
           <select id={idA} className="input" value={monthA} onChange={(e) => setMonthA(e.target.value)}>
             {monthOptions}
           </select>
@@ -83,19 +83,25 @@ export function MonthCompare({ currentMonth, selectedKeys }) {
                 <div className={styles.rankLine}>
                   <span className={styles.rankName}>{r.label}</span>
                   <span className={styles.delta} data-direction={r.delta > 0 ? 'up' : r.delta < 0 ? 'down' : 'same'}>
-                    {r.delta === 0 ? '0 ₽' : formatDelta(r.delta)}
+                    {formatDelta(r.delta)}
                   </span>
                 </div>
                 <div className={styles.pairBars}>
                   <span className={styles.pairBarLine}>
                     <span className={styles.track}>
-                      <span className={styles.bar} style={{ width: `${(r.a / max) * 100}%`, background: NEUTRAL_COLOR }} />
+                      <span
+                        className={styles.bar}
+                        style={{ width: `${(r.a / max) * 100}%`, background: paint(NEUTRAL_COLOR) }}
+                      />
                     </span>
                     <span className={styles.pairValue}>{formatMoneyRounded(r.a)}</span>
                   </span>
                   <span className={styles.pairBarLine}>
                     <span className={styles.track}>
-                      <span className={styles.bar} style={{ width: `${(r.b / max) * 100}%`, background: r.color }} />
+                      <span
+                        className={styles.bar}
+                        style={{ width: `${(r.b / max) * 100}%`, background: paint(r.color) }}
+                      />
                     </span>
                     <span className={styles.pairValue}>{formatMoneyRounded(r.b)}</span>
                   </span>

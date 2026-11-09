@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react';
+import { paint } from '../../lib/palette.js';
 import styles from './charts.module.css';
 
 /**
@@ -23,7 +24,7 @@ export function ChartTooltip({ x, chartWidth, title, rows }) {
           {r.color && (
             <span
               className={`${styles.tooltipSwatch} ${r.dashed ? styles.tooltipSwatchDashed : ''}`}
-              style={{ '--swatch': r.color }}
+              style={{ '--swatch': paint(r.color) }}
               aria-hidden="true"
             />
           )}

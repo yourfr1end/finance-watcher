@@ -5,6 +5,7 @@ const TABS = [
   { to: '/expenses', label: 'Траты', icon: '🧾' },
   { to: '/stats', label: 'Статистика', icon: '📊' },
   { to: '/categories', label: 'Категории', icon: '🗂️' },
+  { to: '/settings', label: 'Настройки', icon: '⚙️' },
 ];
 
 export function Layout() {

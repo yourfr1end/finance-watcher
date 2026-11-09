@@ -1,3 +1,9 @@
+/*
+ * Themes. <html data-theme="dark | light | system"> is set by ThemeController
+ * (and by the inline script in index.html before first paint).
+ * Dark is the default and the reference palette; light has its own validated steps.
+ * Category colors are stored as dark hexes and painted via --series-N (see lib/palette.js).
+ */
 :root {
   color-scheme: dark;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -12,12 +18,74 @@
   --accent-text: #0f172a;
   --danger: #f87171;
 
+  /* categorical palette, dark steps (validated on --bg) */
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --neutral: #94a3b8;
+  --other: #475569;
+
   --radius-sm: 8px;
   --radius: 12px;
   --tabbar-height: 64px;
 
   background: var(--bg);
   color: var(--text);
+}
+
+/* light tokens — declared twice: explicit choice, and "system" when the OS is light */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-2: #e2e8f0;
+  --border: #cbd5e1;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #047857;
+  --accent-text: #ffffff;
+  --danger: #dc2626;
+  /* same hues, light steps (validated on #fff and #f1f5f9) */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #6250d6;
+  --series-8: #e34948;
+  --neutral: #64748b;
+  --other: #b6c2d1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme='system'] {
+    color-scheme: light;
+    --bg: #f1f5f9;
+    --surface: #ffffff;
+    --surface-2: #e2e8f0;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #475569;
+    --accent: #047857;
+    --accent-text: #ffffff;
+    --danger: #dc2626;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-5: #e87ba4;
+    --series-6: #008300;
+    --series-7: #6250d6;
+    --series-8: #e34948;
+    --neutral: #64748b;
+    --other: #b6c2d1;
+  }
 }
 
 * {
@@ -27,6 +95,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
 }
 
 input,

@@ -1,3 +1,4 @@
+import { paint } from '../../lib/palette.js';
 import styles from './DonutChart.module.css';
 
 // geometry in viewBox units (rendered ~260px wide -> 1 unit ≈ 2.2px)
@@ -98,7 +99,7 @@ export function DonutChart({ segments, activeKey, onSelect, onHover, ariaLabel, 
         aria-label={ariaLabel}
         onPointerLeave={hover(null)}
       >
-        <circle cx={C} cy={C} r={R} fill="none" stroke="var(--surface)" strokeWidth={WIDTH} />
+        <circle cx={C} cy={C} r={R} fill="none" style={{ stroke: 'var(--surface)' }} strokeWidth={WIDTH} />
 
         {arcs.map((a) => {
           const active = a.key === activeKey;
@@ -115,12 +116,11 @@ export function DonutChart({ segments, activeKey, onSelect, onHover, ariaLabel, 
             >
               <title>{a.label}</title>
               {single ? (
-                <circle cx={C} cy={C} r={R} fill="none" stroke={a.color} strokeWidth={WIDTH} />
+                <circle cx={C} cy={C} r={R} fill="none" style={{ stroke: paint(a.color) }} strokeWidth={WIDTH} />
               ) : (
                 <path
                   d={sectorPath(a.start, a.end, R_IN, R_OUT, HALF_GAP)}
-                  fill={a.color}
-                  stroke={a.color}
+                  style={{ fill: paint(a.color), stroke: paint(a.color) }}
                   strokeWidth={CORNER}
                   strokeLinejoin="round"
                 />

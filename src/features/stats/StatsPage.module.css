@@ -279,7 +279,15 @@
 
 /* the second month is drawn in each category's own color */
 .pairSwatchColor {
-  background: conic-gradient(#3987e5, #d95926, #199e70, #c98500, #d55181, #9085e9, #3987e5);
+  background: conic-gradient(
+    var(--series-1),
+    var(--series-2),
+    var(--series-3),
+    var(--series-4),
+    var(--series-5),
+    var(--series-7),
+    var(--series-1)
+  );
 }
 
 .swap {

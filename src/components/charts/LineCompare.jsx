@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { formatCompact } from '../../lib/format.js';
+import { paint } from '../../lib/palette.js';
 import { ChartTooltip } from './ChartTooltip.jsx';
 import { niceMax, useElementWidth } from './useElementWidth.js';
 import styles from './charts.module.css';
@@ -63,7 +64,7 @@ export function LineCompare({ series, days, height = 200, formatValue, ariaLabel
                 key={s.key}
                 d={s.values.map((v, i) => `${i ? 'L' : 'M'} ${x(i + 1)} ${y(v)}`).join(' ')}
                 fill="none"
-                stroke={s.color}
+                style={{ stroke: paint(s.color) }}
                 strokeWidth={2}
                 strokeLinejoin="round"
                 strokeLinecap="round"
@@ -82,8 +83,7 @@ export function LineCompare({ series, days, height = 200, formatValue, ariaLabel
                     cx={x(day)}
                     cy={y(s.values[day - 1])}
                     r={4.5}
-                    fill={s.color}
-                    stroke="var(--bg)"
+                    style={{ fill: paint(s.color), stroke: 'var(--bg)' }}
                     strokeWidth={2}
                   />
                 ) : null,

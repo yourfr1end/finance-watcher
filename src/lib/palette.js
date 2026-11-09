@@ -20,6 +20,21 @@ export const COLORS = [
 export const NEUTRAL_COLOR = '#94a3b8'; // "без категории" / "без тега"
 export const OTHER_COLOR = '#475569'; // "другое" (folded tail of a chart)
 
+/**
+ * Stored colors are the dark-theme hexes above (stable identity in the data).
+ * paint() maps them to theme CSS variables (--series-1..8, --neutral, --other in index.css),
+ * so switching theme repaints everything with that theme's validated steps.
+ * Use it wherever a color reaches the DOM.
+ */
+export function paint(color) {
+  if (!color) return color;
+  const i = COLORS.indexOf(color);
+  if (i !== -1) return `var(--series-${i + 1})`;
+  if (color === NEUTRAL_COLOR) return 'var(--neutral)';
+  if (color === OTHER_COLOR) return 'var(--other)';
+  return color; // already a CSS var / custom color
+}
+
 /** Previous palette -> closest current hue (used by the v5 data migration). */
 export const LEGACY_COLOR_MAP = {
   '#34d399': '#199e70',

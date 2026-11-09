@@ -1,3 +1,4 @@
+import { paint } from '../../lib/palette.js';
 import styles from './TagChip.module.css';
 
 /**
@@ -5,7 +6,7 @@ import styles from './TagChip.module.css';
  * shows a remove "×" when onRemove is given.
  */
 export function TagChip({ tag, selected, onClick, onRemove, children }) {
-  const style = { '--tag-color': tag?.color ?? 'var(--muted)' };
+  const style = { '--tag-color': paint(tag?.color) ?? 'var(--muted)' };
   const content = children ?? `#${tag.name}`;
 
   if (onClick) {

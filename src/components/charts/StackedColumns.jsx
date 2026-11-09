@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { formatCompact } from '../../lib/format.js';
+import { paint } from '../../lib/palette.js';
 import { ChartTooltip } from './ChartTooltip.jsx';
 import { niceMax, useElementWidth } from './useElementWidth.js';
 import styles from './charts.module.css';
@@ -62,10 +63,11 @@ export function StackedColumns({ columns, height = 200, formatValue, ariaLabel }
                   // gap above every segment except the top one
                   const h = Math.max(bottom - top - (isTop ? 0 : SEGMENT_GAP), 0);
                   const yTop = isTop ? top : top + SEGMENT_GAP;
+                  const fill = { fill: paint(p.color) };
                   return isTop ? (
-                    <path key={p.key} d={topRoundedRect(x, yTop, barW, h, RADIUS)} fill={p.color} />
+                    <path key={p.key} d={topRoundedRect(x, yTop, barW, h, RADIUS)} style={fill} />
                   ) : (
-                    <rect key={p.key} x={x} y={yTop} width={barW} height={h} fill={p.color} />
+                    <rect key={p.key} x={x} y={yTop} width={barW} height={h} style={fill} />
                   );
                 })}
                 <text className={styles.axisText} x={centerX(i)} y={height - 6} textAnchor="middle">

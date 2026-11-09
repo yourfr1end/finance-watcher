@@ -8,6 +8,15 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     <title>Finance Watcher</title>
+    <script>
+      // apply the saved theme before first paint (no dark->light flash); ThemeController takes over after
+      try {
+        var saved = JSON.parse(localStorage.getItem('finance-watcher'));
+        document.documentElement.dataset.theme = (saved && saved.state.settings && saved.state.settings.theme) || 'dark';
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>

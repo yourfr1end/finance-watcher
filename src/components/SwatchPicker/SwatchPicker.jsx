@@ -1,3 +1,4 @@
+import { paint } from '../../lib/palette.js';
 import styles from './SwatchPicker.module.css';
 
 /**
@@ -27,5 +28,5 @@ export function SwatchPicker({ label, options, value, onChange, renderOption, ge
 }
 
 export function ColorDot({ color, size = 20 }) {
-  return <span className={styles.dot} style={{ background: color, width: size, height: size }} />;
+  return <span className={styles.dot} style={{ background: paint(color), width: size, height: size }} />;
 }

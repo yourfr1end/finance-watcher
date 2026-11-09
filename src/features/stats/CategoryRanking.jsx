@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
 import { formatMoneyRounded } from '../../lib/format.js';
+import { paint } from '../../lib/palette.js';
 import styles from './StatsPage.module.css';
 
 const percent = (v, total) => {
@@ -35,7 +36,10 @@ export function CategoryRanking({ ranking, total }) {
                 </span>
                 <span className={styles.rankLine}>
                   <span className={styles.track}>
-                    <span className={styles.bar} style={{ width: `${(r.value / max) * 100}%`, background: r.color }} />
+                    <span
+                      className={styles.bar}
+                      style={{ width: `${(r.value / max) * 100}%`, background: paint(r.color) }}
+                    />
                   </span>
                   <span className={styles.rankPercent}>{percent(r.value, total)}</span>
                 </span>
@@ -53,7 +57,7 @@ export function CategoryRanking({ ranking, total }) {
                     <span className={styles.track}>
                       <span
                         className={styles.bar}
-                        style={{ width: `${(t.value / r.tags[0].value) * 100}%`, background: t.color }}
+                        style={{ width: `${(t.value / r.tags[0].value) * 100}%`, background: paint(t.color) }}
                       />
                     </span>
                     <span className={styles.tagValue}>

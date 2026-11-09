@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import { useFinanceStore } from '../../store/useFinanceStore.js';
 import { shiftDay, toDayKey, withDay } from '../../lib/date.js';
+import { currencySymbol } from '../../lib/format.js';
 import { CategoryPicker } from './CategoryPicker.jsx';
 import { TagPicker } from './TagPicker.jsx';
 import styles from './ExpenseForm.module.css';
@@ -83,7 +84,7 @@ export function ExpenseForm({ expense, initialCategoryId, defaultDay, onSubmit, 
             aria-describedby={submitted && amountError ? `${amountId}-error` : undefined}
             data-autofocus={!expense || undefined}
           />
-          <span className={styles.currency}>₽</span>
+          <span className={styles.currency}>{currencySymbol()}</span>
         </div>
         {submitted && amountError && (
           <span id={`${amountId}-error`} className="field-error">

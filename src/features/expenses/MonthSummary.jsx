@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { DonutChart } from '../../components/DonutChart/DonutChart.jsx';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
 import { formatMoney, pluralize } from '../../lib/format.js';
+import { paint } from '../../lib/palette.js';
 import styles from './MonthSummary.module.css';
 
 const COLLAPSED_ROWS = 5;
@@ -94,7 +95,7 @@ export function MonthSummary({ rows, slices, total, count, comparison, selectedK
                     <span className={styles.track} aria-hidden="true">
                       <span
                         className={styles.bar}
-                        style={{ width: `${(r.value / maxValue) * 100}%`, background: r.color }}
+                        style={{ width: `${(r.value / maxValue) * 100}%`, background: paint(r.color) }}
                       />
                     </span>
                     <span className={styles.percent}>{formatPercent(r.value, total)}</span>
