@@ -1,6 +1,8 @@
 .dialog {
   width: min(520px, 100%);
+  max-width: 100%; /* UA default is 100% - 2em: the bottom sheet should span the phone width */
   max-height: min(90vh, 100%);
+  overflow-x: hidden; /* safety net; layout itself must not overflow (see form grids) */
   overflow-y: auto;
   overscroll-behavior: contain;
   margin: auto auto 0;
@@ -20,7 +22,7 @@
 }
 
 .dialog::backdrop {
-  background: rgb(0 0 0 / 0.6);
+  background: var(--backdrop);
 }
 
 .panel {
@@ -32,6 +34,19 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+}
+
+.close {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background: var(--surface-2);
 }
 
 .title {

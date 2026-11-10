@@ -39,7 +39,7 @@ export const formatCompact = (value) => compact.format(value);
 export const formatDelta = (value) =>
   `${value > 0 ? '+' : value < 0 ? '−' : ''}${moneyRounded.format(Math.abs(value))}`;
 
-export const CURRENCIES = ['RUB', 'USD', 'EUR', 'RSD', 'KZT', 'BYN', 'UAH', 'GEL', 'AMD', 'AZN', 'UZS', 'KGS', 'TRY', 'CNY', 'GBP', 'CHF', 'JPY'];
+export const CURRENCIES = ['RSD', 'RUB', 'KZT', 'USD', 'EUR'];
 
 const currencyNames = new Intl.DisplayNames(['ru'], { type: 'currency' });
 /** "Российский рубль" */

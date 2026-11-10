@@ -48,12 +48,12 @@
 .arrow {
   display: inline-grid;
   place-items: center;
-  width: 18px;
-  height: 18px;
+  flex: none;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--surface);
   color: var(--text);
-  font-size: 0.75rem;
 }
 
 /* ---- ranked legend ---- */
@@ -121,7 +121,7 @@
   flex: 1;
   height: 4px;
   border-radius: 2px;
-  background: var(--surface);
+  background: var(--track);
   overflow: hidden;
 }
 

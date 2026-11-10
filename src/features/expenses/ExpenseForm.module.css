@@ -1,5 +1,7 @@
 .form {
   display: grid;
+  /* minmax(0, …): children must not widen the column past the dialog (grid min-width: auto) */
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
 }
 
@@ -10,7 +12,7 @@
   padding: 8px 12px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--input-bg);
 }
 
 .amountBox:focus-within {
@@ -24,6 +26,7 @@
 .amount {
   flex: 1;
   min-width: 0;
+  width: 100%; /* otherwise the input is ~20 characters of 2rem text wide */
   border: none;
   background: transparent;
   outline: none;

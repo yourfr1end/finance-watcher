@@ -5,6 +5,7 @@ import { useCategoriesById, useMonthExpenses } from '../../store/selectors.js';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
 import { ConfirmDialog } from '../../components/ConfirmDialog/ConfirmDialog.jsx';
 import { Fab } from '../../components/Fab/Fab.jsx';
+import { Icon } from '../../components/Icon/Icon.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { HeaderButton, PageHeader } from '../../components/PageHeader/PageHeader.jsx';
 import { TagChip } from '../../components/TagChip/TagChip.jsx';
@@ -109,7 +110,7 @@ export function ExpensesPage() {
         title={formatMonth(month)}
         start={
           <HeaderButton label="Предыдущий месяц" onClick={() => setMonth(addMonths(month, -1))}>
-            ‹
+            <Icon name="chevronLeft" size={24} />
           </HeaderButton>
         }
         end={
@@ -118,7 +119,7 @@ export function ExpensesPage() {
             onClick={() => setMonth(addMonths(month, 1))}
             disabled={month >= currentMonth}
           >
-            ›
+            <Icon name="chevronRight" size={24} />
           </HeaderButton>
         }
       >
@@ -157,7 +158,7 @@ export function ExpensesPage() {
             onClick={() => selectCategory(null)}
             aria-label="Показать все траты"
           >
-            ✕
+            <Icon name="close" size={16} />
           </button>
         </div>
       )}

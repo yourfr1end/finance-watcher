@@ -6,6 +6,10 @@
   gap: 6px;
 }
 
+.fieldset legend {
+  padding: 0;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));

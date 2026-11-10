@@ -30,6 +30,20 @@
   --neutral: #94a3b8;
   --other: #475569;
 
+  /* surface treatment — dark values reproduce the original dark look exactly */
+  --accent-ink: var(--accent); /* accent used as text */
+  --accent-soft: var(--surface-2); /* tinted background of active items */
+  --card: var(--bg);
+  --card-border: var(--surface);
+  --shadow-sm: none;
+  --shadow-lg: 0 6px 20px rgb(0 0 0 / 0.4);
+  --shadow-up: none; /* tab bar lifted above content */
+  --tabbar-bg: color-mix(in srgb, var(--surface) 92%, transparent);
+  --tabbar-border: var(--border);
+  --backdrop: rgb(0 0 0 / 0.6);
+  --input-bg: var(--bg);
+  --track: var(--surface); /* empty part of progress bars */
+
   --radius-sm: 8px;
   --radius: 12px;
   --tabbar-height: 64px;
@@ -38,19 +52,23 @@
   color: var(--text);
 }
 
-/* light tokens — declared twice: explicit choice, and "system" when the OS is light */
+/*
+ * Light tokens — declared twice: explicit choice, and "system" when the OS is light.
+ * Depth comes from white cards with soft shadows on a cool tinted background (not borders);
+ * contrast checked: text 16.3:1, muted ≥5.6:1, white on accent 4.5:1, accent-ink on soft 4.7:1.
+ */
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #f1f5f9;
+  --bg: #edf1f7;
   --surface: #ffffff;
-  --surface-2: #e2e8f0;
-  --border: #cbd5e1;
-  --text: #0f172a;
-  --muted: #475569;
-  --accent: #047857;
+  --surface-2: #e3e9f2;
+  --border: #d3dbe7;
+  --text: #0b1324;
+  --muted: #526077;
+  --accent: #04875f;
   --accent-text: #ffffff;
   --danger: #dc2626;
-  /* same hues, light steps (validated on #fff and #f1f5f9) */
+  /* same hues, light steps (validated on #fff and #edf1f7) */
   --series-1: #2a78d6;
   --series-2: #eb6834;
   --series-3: #1baf7a;
@@ -61,18 +79,31 @@
   --series-8: #e34948;
   --neutral: #64748b;
   --other: #b6c2d1;
+
+  --accent-ink: #047857;
+  --accent-soft: #d4f4e6;
+  --card: #ffffff;
+  --card-border: transparent;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.05), 0 4px 14px rgb(15 23 42 / 0.07);
+  --shadow-lg: 0 8px 24px rgb(4 135 95 / 0.35);
+  --shadow-up: 0 -4px 16px rgb(15 23 42 / 0.08);
+  --tabbar-bg: rgb(255 255 255 / 0.92);
+  --tabbar-border: transparent;
+  --backdrop: rgb(15 23 42 / 0.4);
+  --input-bg: #ffffff;
+  --track: #e3e9f2;
 }
 
 @media (prefers-color-scheme: light) {
   :root[data-theme='system'] {
     color-scheme: light;
-    --bg: #f1f5f9;
+    --bg: #edf1f7;
     --surface: #ffffff;
-    --surface-2: #e2e8f0;
-    --border: #cbd5e1;
-    --text: #0f172a;
-    --muted: #475569;
-    --accent: #047857;
+    --surface-2: #e3e9f2;
+    --border: #d3dbe7;
+    --text: #0b1324;
+    --muted: #526077;
+    --accent: #04875f;
     --accent-text: #ffffff;
     --danger: #dc2626;
     --series-1: #2a78d6;
@@ -85,6 +116,19 @@
     --series-8: #e34948;
     --neutral: #64748b;
     --other: #b6c2d1;
+
+    --accent-ink: #047857;
+    --accent-soft: #d4f4e6;
+    --card: #ffffff;
+    --card-border: transparent;
+    --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.05), 0 4px 14px rgb(15 23 42 / 0.07);
+    --shadow-lg: 0 8px 24px rgb(4 135 95 / 0.35);
+    --shadow-up: 0 -4px 16px rgb(15 23 42 / 0.08);
+    --tabbar-bg: rgb(255 255 255 / 0.92);
+    --tabbar-border: transparent;
+    --backdrop: rgb(15 23 42 / 0.4);
+    --input-bg: #ffffff;
+    --track: #e3e9f2;
   }
 }
 
@@ -157,7 +201,7 @@ textarea {
   padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--input-bg);
 }
 
 .input[aria-invalid='true'] {
@@ -166,6 +210,7 @@ textarea {
 
 .field {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 6px;
 }
 

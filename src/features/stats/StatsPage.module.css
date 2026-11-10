@@ -28,8 +28,9 @@
 }
 
 .segmentActive {
-  background: var(--surface-2);
+  background: var(--accent-soft);
   color: var(--text);
+  box-shadow: var(--shadow-sm);
 }
 
 .chips {
@@ -69,6 +70,7 @@
   padding: 12px;
   border-radius: var(--radius);
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
   min-width: 0;
 }
 
@@ -96,8 +98,9 @@
   padding: 14px 14px 16px;
   margin-bottom: 16px;
   border-radius: var(--radius);
-  background: var(--bg);
-  border: 1px solid var(--surface);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .cardTitle {
@@ -197,7 +200,7 @@
   flex: 1;
   height: 6px;
   border-radius: 3px;
-  background: var(--surface);
+  background: var(--track);
   overflow: hidden;
 }
 
@@ -291,8 +294,16 @@
 }
 
 .swap {
-  padding: 8px;
-  font-size: 1.1rem;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.swap:hover {
+  background: var(--surface);
 }
 
 .pairTotals {

@@ -1,6 +1,7 @@
 ﻿import { useId, useMemo, useState } from 'react';
 import { useFinanceStore } from '../../store/useFinanceStore.js';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
+import { Icon } from '../../components/Icon/Icon.jsx';
 import { addMonths, formatMonthShort, toMonthKey } from '../../lib/date.js';
 import { formatDelta, formatMoneyRounded } from '../../lib/format.js';
 import { NEUTRAL_COLOR, paint } from '../../lib/palette.js';
@@ -50,7 +51,7 @@ export function MonthCompare({ currentMonth, selectedKeys }) {
           </select>
         </label>
         <button type="button" className={`btn btn-ghost ${styles.swap}`} onClick={swap} aria-label="Поменять местами">
-          ⇄
+          <Icon name="swap" size={20} />
         </button>
         <label className={styles.pairField} htmlFor={idB}>
           <span className={`${styles.pairSwatch} ${styles.pairSwatchColor}`} aria-hidden="true" />

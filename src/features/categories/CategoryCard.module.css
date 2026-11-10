@@ -7,6 +7,7 @@
   border: 1px solid transparent;
   border-radius: var(--radius);
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
   text-align: left;
   cursor: pointer;
 }

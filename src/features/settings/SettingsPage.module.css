@@ -47,11 +47,13 @@
   border-radius: var(--radius);
   border: 2px solid var(--border);
   background: var(--surface);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
 
 .theme input:checked + .themeFace {
   border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .theme input:focus-visible + .themeFace {

@@ -14,9 +14,10 @@
   gap: 8px;
   height: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
   padding: 6px 8px env(safe-area-inset-bottom);
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  background: var(--tabbar-bg);
   backdrop-filter: blur(8px);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--tabbar-border);
+  box-shadow: var(--shadow-up);
   z-index: 10;
 }
 
@@ -39,6 +40,6 @@
 }
 
 .active {
-  color: var(--accent);
-  background: var(--surface-2);
+  color: var(--accent-ink);
+  background: var(--accent-soft);
 }

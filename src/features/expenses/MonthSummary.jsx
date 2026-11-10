@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { DonutChart } from '../../components/DonutChart/DonutChart.jsx';
 import { CategoryIcon } from '../../components/CategoryIcon/CategoryIcon.jsx';
+import { Icon } from '../../components/Icon/Icon.jsx';
 import { formatMoney, pluralize } from '../../lib/format.js';
 import { paint } from '../../lib/palette.js';
 import styles from './MonthSummary.module.css';
@@ -12,7 +13,7 @@ const formatPercent = (value, total) => {
   return p > 0 && p < 1 ? '<1%' : `${Math.round(p)}%`;
 };
 
-const ARROWS = { up: '↑', down: '↓', same: '=' };
+const ARROWS = { up: 'arrowUp', down: 'arrowDown', same: 'equal' };
 
 /**
  * Donut + ranked legend for one month.
@@ -67,7 +68,7 @@ export function MonthSummary({ rows, slices, total, count, comparison, selectedK
       {comparison && (
         <p className={styles.comparison}>
           <span className={styles.arrow} aria-hidden="true">
-            {ARROWS[comparison.direction]}
+            <Icon name={ARROWS[comparison.direction]} size={12} strokeWidth={2.5} />
           </span>
           {comparison.text}
         </p>

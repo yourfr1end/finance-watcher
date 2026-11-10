@@ -59,7 +59,8 @@ export function SettingsPage() {
           value={settings.currency}
           onChange={(e) => updateSettings({ currency: e.target.value })}
         >
-          {CURRENCIES.map((code) => (
+          {/* keep a previously saved currency selectable even if it left the list */}
+          {(CURRENCIES.includes(settings.currency) ? CURRENCIES : [...CURRENCIES, settings.currency]).map((code) => (
             <option key={code} value={code}>
               {currencySymbol(code)} — {currencyName(code)} ({code})
             </option>
